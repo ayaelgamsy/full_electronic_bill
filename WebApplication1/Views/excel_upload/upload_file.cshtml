@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "upload_file";
+}
+
+<h2>upload_file</h2>
+<h2>UploadFile</h2>
+@using (Html.BeginForm("upload_file", "excel_upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div>
+    @Html.TextBox("file", "", new { type = "file" }) <br />
+    <input type="submit" value="Upload" />
+    @ViewBag.Message
+    @ViewBag.cheked_bill
+    @ViewBag.dateTimeIssued
+    @ViewBag.total_befor_discount
+</div>
+}
+

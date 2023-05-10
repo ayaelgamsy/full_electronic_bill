@@ -1,0 +1,38 @@
+﻿@using WebApplication1.Models
+@model deductions
+@{
+    ViewBag.Title = "update_deduction";
+}
+
+<div class="col-12 grid-margin stretch-card" dir="rtl">
+    <div class="card" dir="rtl">
+        <div class="card-body" dir="rtl" align="right">
+            <h4 class="card-title">تعديل  بيانات أستقطاع </h4>
+
+            <form class="forms-sample" method="post" action="/deductions/edite_deduction">
+                @Html.HiddenFor(n => n.deduction_id)
+                <div class="form-group">
+                    @Html.LabelFor(n => n.deduction_name)
+                    @Html.TextBoxFor(n => n.deduction_name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.deduction_name)
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.returnable)
+                    @Html.EditorFor(n => n.returnable, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.returnable)
+
+                </div>
+
+                
+               
+
+
+
+                <button type="submit" class="btn btn-primary mr-2" name="save" id="save">تعديل</button>
+
+
+            </form>
+        </div>
+    </div>
+</div>

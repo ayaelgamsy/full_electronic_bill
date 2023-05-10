@@ -1,0 +1,56 @@
+﻿@using WebApplication1.Models;
+@model service
+@{
+    ViewBag.Title = "update_service";
+
+}
+
+<div class="col-12 grid-margin stretch-card" dir="rtl">
+    <div class="card" dir="rtl">
+        <div class="card-body" dir="rtl" align="right">
+            <h4 class="card-title">تعديل   بيانات خدمة </h4>
+
+            <form class="forms-sample" method="post" action="/services/edite_service">
+                @Html.HiddenFor(n => n.services_id)
+                <div class="form-group">
+                    @Html.LabelFor(n => n.activity_id)
+                    @Html.DropDownListFor(n => n.activity_id, (SelectList)ViewBag.actives, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(n => n.activity_id)
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.service_name)
+                    @Html.TextBoxFor(n => n.service_name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.service_name)
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(n => n.service_GPC)
+                    @Html.TextBoxFor(n => n.service_GPC, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.service_GPC)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.service_EGS)
+                    @Html.TextBoxFor(n => n.service_EGS, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.service_EGS)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.service_discription)
+                    @Html.TextBoxFor(n => n.service_discription, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.service_discription)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.unite_id)
+                    @Html.DropDownListFor(n => n.unite_id, (SelectList)ViewBag.units, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.unite_id)
+                </div>
+
+                <button type="submit" class="btn btn-primary mr-2" name="save" id="save">تحديث</button>
+
+
+            </form>
+        </div>
+    </div>
+</div>

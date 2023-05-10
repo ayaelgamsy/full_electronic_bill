@@ -1,0 +1,92 @@
+﻿@using WebApplication1.Models
+@model  service
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+    ViewBag.Title = "services";
+
+}
+
+
+
+
+<div class="col-12 grid-margin stretch-card" dir="rtl">
+    <div class="card" dir="rtl">
+        <div class="card-body" dir="rtl" align="right">
+            <h4 class="card-title">تسجيل  بيانات خدمة </h4>
+
+            <form class="forms-sample" method="post" action="/services/save_service">
+
+                <div class="form-group">
+                    @Html.LabelFor(n => n.activity_id)
+                    @Html.DropDownListFor(n => n.activity_id, (SelectList)ViewBag.actives, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(n => n.activity_id)
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.service_name)
+
+                    @Html.TextBoxFor(n => n.service_name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.service_name)
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.codeName)
+
+                    @Html.TextBoxFor(n => n.codeName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.codeName)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.codeType)
+                    @Html.DropDownListFor(n => n.codeType, (SelectList)ViewBag.codetype, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(n => n.codeType)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.service_GPC)
+                    @Html.TextBoxFor(n => n.service_GPC, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.service_GPC)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.service_EGS)
+                    @Html.TextBoxFor(n => n.service_EGS, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.service_EGS)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.service_discription)
+                    @Html.TextBoxFor(n => n.service_discription, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.service_discription)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.description)
+                    @Html.TextBoxFor(n => n.description, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.description)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.activeFrom)
+                    @Html.TextBoxFor(n => n.activeFrom, new { @type = "date", @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.activeFrom)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.activeTo)
+                    @Html.TextBoxFor(n => n.activeTo, new { @type = "date", @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.activeTo)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.unite_id)
+                    @Html.DropDownListFor(n => n.unite_id, (SelectList)ViewBag.units, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.unite_id)
+                </div>
+
+                <button type="submit" class="btn btn-primary mr-2" name="save" id="save">حفظ</button>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+

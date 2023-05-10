@@ -1,0 +1,164 @@
+﻿@using WebApplication1.Models
+@model  out_going_billss
+
+
+    @{
+        ViewBag.Title = "add_bill_details";
+    }
+    <div class="row">
+        <div class="col-md-4 grid-margin stretch-card">
+            <div class="card" dir="rtl">
+                <div class="card-body" dir="rtl" align="right">
+                    <h4 class="card-title">فاتورة جديدة </h4>
+                    @Html.HiddenFor(n => n.bill_id)
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="template-demo">
+                                <button type="submit" class="btn btn-info btn-icon-text" onclick="window.location.href='/out_going/print_outgoingbill/@ViewBag.bill_id'">
+                                    طباعة <i class="mdi mdi-printer btn-icon-append"></i>
+                                </button>
+                                <button type="submit" class="btn btn-warning btn-icon-text">
+                                    <i class="mdi mdi-reload btn-icon-prepend"></i> تعديل
+                                </button>
+                                <button type="button" class="btn btn-primary btn-icon-text" onclick="window.location.href='/out_going/send_decument/@ViewBag.bill_id'">
+                                    <i class="mdi mdi-file-check btn-icon-prepend"></i>ارسال
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(n => n.activity_id)
+                        @Html.DropDownListFor(n => n.activity_id, (SelectList)ViewBag.activity_select, new { @class = "form-control" })
+
+                        @Html.ValidationMessageFor(n => n.activity_id)
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(n => n.customer_id)
+                        @Html.DropDownListFor(n => n.customer_id, (SelectList)ViewBag.custselect, new { @class = "form-control" })
+
+                        @Html.ValidationMessageFor(n => n.customer_id)
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(n => n.type_id)
+                        @Html.DropDownListFor(n => n.type_id, (SelectList)ViewBag.bill_type_select, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.type_id)
+
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(n => n.coin_id)
+                        @Html.DropDownListFor(n => n.coin_id, (SelectList)ViewBag.coin_types_select, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.coin_id)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(n => n.bill_date)
+                        @Html.TextBoxFor(n => n.bill_date, new { @type = "date", @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.bill_date)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(n => n.total_after_discount)
+                        @Html.TextBoxFor(n => n.total_after_discount, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.total_after_discount)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(n => n.tax_percent)
+                        @Html.TextBoxFor(n => n.tax_percent, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.tax_percent)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(n => n.tax_value)
+                        @Html.TextBoxFor(n => n.tax_value, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.tax_value)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(n => n.final_total_plus_tax)
+                        @Html.TextBoxFor(n => n.final_total_plus_tax, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.final_total_plus_tax)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <form class="forms-sample" method="post" action="/out_going/add_bill_details">
+                            <div class="row">
+                                @Html.HiddenFor(n => n.bill_id)
+                                <div class="col-md-3 form-group">
+                                    <label for="exampleInputName1">الخدمة</label>
+                                    <select class="form-control" name="services_id">
+                                        <option value="0">إختر خدمة</option>
+                                        @foreach (var item in (List<service>)ViewBag.servlist)
+                                        {
+                                            <option value="@item.services_id">@item.service_name</option>
+
+                                        }
+
+
+
+                                    </select>
+
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label for="exampleInputName1">الكمية</label>
+
+                                    <input type="text" class="form-control" id="amount" placeholder="الكمية" name="amount">
+
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label for="exampleInputName1">سعر الوحدة</label>
+
+                                    <input type="text" class="form-control" id="unite_price" placeholder="الكمية" name="unite_price">
+
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <br />
+
+                                    <button type="submit" class="btn btn-success btn-rounded btn-fw" name="save "> إضافة </button>
+                                </div>
+
+                                <table class="table table-dark">
+                                    <thead>
+                                        <tr>
+                                            <th>  مسلسل</th>
+                                            <th>  الخدمة</th>
+                                            <th> الكمية </th>
+                                            <th> سعر الوحدة </th>
+                                            <th> الإجمالى </th>
+                                            <th> </th>
+
+                                        </tr>
+                                    </thead>
+
+
+                                    @foreach (var item in (List<out_going_bills_details>)ViewBag.bills_Details)
+                                    {
+                                <tr>
+                                    <td>@item.out_details_id</td>
+                                    <td>@item.service.service_name</td>
+                                    <td>@item.amount</td>
+                                    <td>@item.unite_price</td>
+                                    <td>@item.total</td>
+                                    <td>
+                                    <td><a href="/out_going/delete_details/@item.out_details_id"> حذف</a></td>
+
+                                </tr>
+
+                                    }
+
+
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

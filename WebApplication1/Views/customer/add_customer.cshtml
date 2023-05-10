@@ -1,0 +1,203 @@
+﻿@using WebApplication1.Models
+@model customer
+@{
+    ViewBag.Title = "add_customer";
+    List<customer> customers = ViewBag.customerlist;
+    List<custumers_activity> custumers_Activities = Session["custumers_actives"] as List<custumers_activity>;
+    List<activity> activitiesname = Session["activitiesname"] as List<activity>;
+}
+
+<div class="row">
+    <div class="col-md-4 grid-margin stretch-card">
+        <div class="card" dir="rtl" align="right">
+            <div class="card-body">
+                <h4 class="card-title">تسجيل  بيانات عميل </h4>
+                <form class="forms-sample" method="post" action="/customer/add_custumers">
+
+                    <div class="form-group">
+                        @Html.LabelFor(n => n.customer_name)
+                        @Html.TextBoxFor(n => n.customer_name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.customer_name)
+                    </div>
+                    <div class=" form-group">
+                        @Html.LabelFor(n => n.address)
+                        @Html.TextBoxFor(n => n.address, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.address)
+                    </div>
+                    <div class=" form-group">
+                        <label for="exampleInputName1">  كود الفرع</label>
+                        <input type="text" class="form-control" id="branche_id" placeholder=" كود الفرع" name="branche_id">
+                        @Html.ValidationMessageFor(n => n.branche_id)
+                    </div>
+                    <div class=" form-group">
+                        <label for="exampleInputName1">  الدولة</label>
+                        <input type="text" class="form-control" id="country" placeholder=" الدولة" name="country">
+                        @Html.ValidationMessageFor(n => n.country)
+                    </div>
+                    <div class=" form-group">
+                        <label for="exampleInputName1"> المحافظة</label>
+                        <input type="text" class="form-control" id="governate" placeholder=" المحافظة" name="governate">
+                        @Html.ValidationMessageFor(n => n.governate)
+                    </div>
+                    <div class=" form-group">
+                        <label for="exampleInputName1"> الحى/المركز</label>
+                        <input type="text" class="form-control" id="regionCity" placeholder=" الحى/المركز" name="regionCity">
+                        @Html.ValidationMessageFor(n => n.regionCity)
+                    </div>
+                    <div class=" form-group">
+                        <label for="exampleInputName1"> الشارع</label>
+                        <input type="text" class="form-control" id="street" placeholder="الشارع" name="street">
+                        @Html.ValidationMessageFor(n => n.street)
+                    </div>
+                    <div class=" form-group">
+                        <label for="exampleInputName1"> رقم المبنى</label>
+                        <input type="text" class="form-control" id="buildingNumber" placeholder=" رقم المبنى" name="buildingNumber">
+                        @Html.ValidationMessageFor(n => n.buildingNumber)
+                    </div>
+                    <div class=" form-group">
+                        <label for="exampleInputName1"> الرمز البريدى</label>
+                        <input type="text" class="form-control" id="postalCode" placeholder=" الرمز البريدى" name="postalCode">
+                        @Html.ValidationMessageFor(n => n.postalCode)
+                    </div>
+                    <div class=" form-group">
+                        <label for="exampleInputName1"> الطابق</label>
+                        <input type="text" class="form-control" id="floor" placeholder=" الطابق" name="floor">
+                        @Html.ValidationMessageFor(n => n.floor)
+                    </div>
+                    <div class=" form-group">
+                        <label for="exampleInputName1">الحجرة</label>
+                        <input type="text" class="form-control" id="room" placeholder=" الحجرة" name="room">
+                        @Html.ValidationMessageFor(n => n.room)
+                    </div>
+                    <div class=" form-group">
+                        <label for="exampleInputName1">معلومات إضافية</label>
+                        <input type="text" class="form-control" id="additionalInformation" placeholder=" معلومات إضافية" name="additionalInformation">
+                        @Html.ValidationMessageFor(n => n.additionalInformation)
+                    </div>
+                    <div class=" form-group">
+                        <label for="exampleInputName1">علامة مميزة</label>
+                        <input type="text" class="form-control" id="landmark" placeholder=" علامة مميزة" name="landmark">
+                        @Html.ValidationMessageFor(n => n.landmark)
+                    </div>
+                    <div class=" form-group">
+                        @Html.LabelFor(n => n.phone)
+                        @Html.TextBoxFor(n => n.phone, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.phone)
+                    </div>
+                    <div class=" form-group">
+                        @Html.LabelFor(n => n.tax_regsistration_number)
+                        @Html.TextBoxFor(n => n.tax_regsistration_number, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.tax_regsistration_number)
+                    </div>
+                    <div class=" form-group">
+                        @Html.LabelFor(n => n.manger_name)
+                        @Html.TextBoxFor(n => n.manger_name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.manger_name)
+                    </div>
+                    <div class=" form-group">
+                        @Html.LabelFor(n => n.manger_assistant)
+                        @Html.TextBoxFor(n => n.manger_assistant, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.manger_assistant)
+                    </div>
+                    <div class=" form-group">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            <i class="mdi mdi-account"></i> حفظ بيانات  عميل
+                        </button>
+                    </div>
+                    @*<div class="row">
+            <div class="col-md-4 form-group">
+                <button type="button" class="btn btn-primary btn-icon-text">
+                    <i class="mdi mdi-file-check btn-icon-prepend"></i> حفظ
+                </button>
+            </div>
+            <div class="col-md-4 form-group">
+                <button type="button" class="btn btn-warning btn-icon-text">
+                    <i class="mdi mdi-reload btn-icon-prepend"></i> تعديل
+                </button>
+            </div>
+            <div class="col-md-4 form-group">
+                <button type="button" class="btn btn-danger btn-icon-text">
+                    <i class="mdi mdi-alert btn-icon-prepend"></i>حذف
+                </button>
+            </div>
+        </div>*@
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <form class="forms-sample" method="post" action="/customer/add_custumers_activity">
+                        <div class="row">
+                            <div class="col-md-3 form-group">
+                                <label for="exampleInputName1">كود النشاط</label>
+                                <select class="form-control" name="activity_id">
+                                    <option value="0">إختر نشاط</option>
+                                    @foreach (var item in (List<activity>)ViewBag.actives)
+                                    {
+                                        <option value="@item.activity_id">@item.activity_name</option>
+
+                                    }
+
+
+
+                                </select>
+
+                            </div>
+                            <div class="col-md-5 form-group">
+                                <label for="exampleInputName1">ملاحظات</label>
+
+                                <input type="text" class="form-control" id="nots" placeholder="ملاحظات" name="nots">
+
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <br />
+
+                                <button type="submit" class="btn btn-success btn-rounded btn-fw" name="save "> إضافة </button>
+                            </div>
+
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+
+                                        <th>  النشاط</th>
+                                        <th> ملاحظات </th>
+
+
+                                        <th> </th>
+
+                                    </tr>
+                                </thead>
+                                @if (Session["custumers_actives"] as List<custumers_activity> != null)
+                                {
+                                    int i = 0;
+                                    foreach (var item in custumers_Activities)
+                                    {
+                                        <tr>
+                                            <td>@activitiesname.ElementAt(i).activity_name</td>
+                                            <td>@item.nots</td>
+
+
+                                        </tr>
+                                        i = i + 1;
+                                    }
+                                }
+
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

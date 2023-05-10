@@ -1,0 +1,99 @@
+﻿@using WebApplication1.Models
+@model  users
+@{
+    ViewBag.Title = "add_users_activity";
+    List<user_activity> users_Activities = ViewBag.users_actives;
+}
+<div class="row">
+    <div class="col-md-4 grid-margin stretch-card">
+        <div class="card" dir="rtl" align="right">
+            <div class="card-body">
+                <h4 class="card-title">تسجيل  بيانات مستخدم </h4>
+                <form class="forms-sample" method="post" action="/customer/add_custumers">
+                    @Html.HiddenFor(n => n.user_id)
+                    <div class="form-group">
+                        @Html.LabelFor(n => n.user_name)
+                        @Html.TextBoxFor(n => n.user_name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.user_name)
+                    </div>
+                    <div class=" form-group">
+                        @Html.LabelFor(n => n.password)
+                        @Html.PasswordFor(n => n.password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.password)
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <form class="forms-sample" method="post" action="/users/add_new_users_activity">
+                        <div class="row">
+                           
+                            <input type="hidden" class="form-control" id="user_id" placeholder="كود النشاط" name="user_id" value="@ViewBag.user_id" >
+                         
+                            <div class="col-md-3 form-group">
+
+                                <label for="exampleInputName1">كود النشاط</label>
+                                <select class="form-control" name="activity_id">
+                                    <option value="0">إختر نشاط</option>
+                                    @foreach (var item in (List<activity>)ViewBag.actives)
+                                    {
+                                        <option value="@item.activity_id">@item.activity_name</option>
+
+                                    }
+
+
+
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-3 form-group">
+                                <br />
+
+                                <button type="submit" class="btn btn-success btn-rounded btn-fw" name="save "> إضافة </button>
+                            </div>
+
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+
+                                        <th>  النشاط</th>
+
+
+
+                                        <th> </th>
+
+                                    </tr>
+                                </thead>
+                                @foreach (var item in users_Activities)
+                                {
+                                    <tr>
+                                        <td>@item.activity.activity_name</td>
+
+                                        <td>
+                                        <td><a href="/users/delete_user_activ/@item.Id"> حذف</a></td>
+
+                                    </tr>
+
+                                }
+
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

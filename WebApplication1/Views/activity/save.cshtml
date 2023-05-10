@@ -1,0 +1,58 @@
+﻿@using WebApplication1.Models
+
+@{
+  Layout ="~/Views/Shared/_layout.cshtml";
+List <activity> actives=ViewBag.activitylistview;
+}
+  <div class="col-lg-12 grid-margin stretch-card"  dir="rtl">
+                <div class="card"  dir="rtl">
+                    <div class="card-body" dir="rtl">
+                        <h4 class="card-title">بيانات الأنشطة</h4>
+                        <div class="form-group"></div>
+                        <div class="template-demo">
+                            <button type="submit" class="btn btn-success btn-fw" onclick="window.location.href='/activity/creat_activity'" >إضافة نشاط</button>
+                           
+                        </div>
+                        <div class="form-group"></div>
+                        <table class="table table-dark">
+                            <thead>
+                                <tr>
+
+                                    <th> إسم الشركة </th>
+                                    <th> رقم التسجيل الضريبى </th>
+                                    <th> البطاقة الضريبية </th>
+                                    <th> السجل التجارى </th>
+
+
+                                    <th>العنواان </th>
+
+                                    <th>الكود الداخلى للشركة </th>
+                                    <th> </th>
+                                    <th> </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in actives)
+                                {
+                                    <tr>
+
+                                        <td>@item.activity_name</td>
+                                        <td>@item.tax_registration_number </td>
+                                        <td>@item.tax_card  </td>
+                                        <td>@item.commercial_register  </td>
+
+
+                                        <td>@item.address  </td>
+
+                                        <td>@item.internal_numberofcomp  </td>
+                                        <td><a href="/update_activity/delete_activity/@item.activity_id"> حذف</a></td>
+                                        <td><a href="/update_activity/update_activity/@item.activity_id"> تعديل</a></td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+              </div>

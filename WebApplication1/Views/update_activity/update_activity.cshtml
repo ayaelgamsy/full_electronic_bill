@@ -1,0 +1,157 @@
+﻿
+@using WebApplication1.Models;
+@model activity
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+    ViewBag.Title = "update_activity";
+    List<activity> actives = ViewBag.activitylistview;
+}
+
+
+
+
+<div class="col-12 grid-margin stretch-card" dir="rtl">
+    <div class="card" dir="rtl">
+        <div class="card-body" dir="rtl" align="right">
+            <h4 class="card-title">تعديل  بيانات نشاط</h4>
+
+            <form class="forms-sample" method="post" action="/update_activity/edite_active">
+                <div class="row">
+                    @*@Html.HiddenFor(n => n.activity_id)*@
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.activity_id)
+                        @Html.TextBoxFor(n => n.activity_id, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.activity_id)
+
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.activity_name)
+                        @Html.TextBoxFor(n => n.activity_name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.activity_name)
+
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.tax_registration_number)
+                        @Html.TextBoxFor(n => n.tax_registration_number, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.tax_registration_number)
+
+                    </div>
+
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.tax_card)
+                        @Html.TextBoxFor(n => n.tax_card, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.tax_card)
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.commercial_register)
+                        @Html.TextBoxFor(n => n.commercial_register, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.commercial_register)
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.phone_number)
+                        @Html.TextBoxFor(n => n.phone_number, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.phone_number)
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.email)
+                        @Html.TextBoxFor(n => n.email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.email)
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.manger_name)
+                        @Html.TextBoxFor(n => n.manger_name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.manger_name)
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.address)
+                        @Html.TextBoxFor(n => n.address, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.address)
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.branche_id)
+                        @Html.TextBoxFor(n => n.branche_id, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(n => n.branche_id)*@
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.country)
+                        @Html.TextBoxFor(n => n.country, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(n => n.country)*@
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.governate)
+                        @Html.TextBoxFor(n => n.governate, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(n => n.governate)*@
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.regionCity)
+                        @Html.TextBoxFor(n => n.regionCity, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(n => n.regionCity)*@
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.street)
+                        @Html.TextBoxFor(n => n.street, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(n => n.street)*@
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.buildingNumber)
+                        @Html.TextBoxFor(n => n.buildingNumber, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(n => n.buildingNumber)*@
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.postalCode)
+                        @Html.TextBoxFor(n => n.postalCode, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(n => n.postalCode)*@
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.floor)
+                        @Html.TextBoxFor(n => n.floor, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(n => n.floor)*@
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.room)
+                        @Html.TextBoxFor(n => n.room, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(n => n.room)*@
+                    </div>
+
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.landmark)
+                        @Html.TextBoxFor(n => n.landmark, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(n => n.landmark)*@
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.additionalInformation)
+                        @Html.TextBoxFor(n => n.additionalInformation, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(n => n.additionalInformation)*@
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.internal_numberofcomp)
+                        @Html.TextBoxFor(n => n.internal_numberofcomp, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.internal_numberofcomp)
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.seed_number)
+                        @Html.TextBoxFor(n => n.seed_number, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(n => n.seed_number)*@
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.client_id)
+                        @Html.TextBoxFor(n => n.client_id, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(n => n.client_id)*@
+                    </div>
+                    <div class="col-md-3 form-group">
+                        @Html.LabelFor(n => n.secret_id)
+                        @Html.TextBoxFor(n => n.secret_id, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(n => n.secret_id)*@
+                    </div>
+                </div>
+                        <button type="submit" class="btn btn-primary mr-2" name="delete" id="save">تعديل بيانات</button>
+
+                        <button class="btn btn-light">إلغاء</button>
+</form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

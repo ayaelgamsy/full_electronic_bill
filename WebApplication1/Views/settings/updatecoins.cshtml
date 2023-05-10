@@ -1,0 +1,193 @@
+﻿@using WebApplication1.Models
+@{
+
+    ViewBag.Title = "updatecoins";
+
+    List<coins_type> coins_types = ViewBag.coinstypelist;
+    List<bill_type> bill_Types = ViewBag.bill_types;
+    List<unit> units = ViewBag.unitslist;
+    unit unit_name = ViewBag.unit_name;
+    bill_type type = ViewBag.type1;
+
+}
+
+<div class="row">
+    @if (ViewBag.coin_name == null && ViewBag.type1 != null)
+    {
+        <div class="col-md-4 grid-margin stretch-card" dir="rtl">
+            <div class="card" dir="rtl">
+                <div class="card-body" dir="rtl">
+                    <h4 class="card-title">إعداد أنواع الفواتير</h4>
+                    <form class="forms-sample" method="post" action="/settings/editebilltype">
+                        <div class="row">
+                            <div class="col-md-9 form-group">
+                                <label for="exampleInputName1">نوع الفاتورة </label>
+                                <input type="hidden" id="coin_id" name="type_id" value="@Request.QueryString["type_id"].ToString()" class="form-control">
+
+                                <input type="text" class="form-control" id="type_name" placeholder="نوع الفاتورة" name="type_name" value="@type.type_name">
+                            </div>
+                            <div class="col-md-9 form-group">
+                                <label for="documentType">documentType </label>
+
+
+                                <input type="text" class="form-control" id="documentType" placeholder="documentTypeة" name="type_name" value="@type.documentType">
+                            </div>
+                            <div class="col-md-9 form-group">
+                                <label for="documentTypeVersion">documentTypeVersion </label>
+
+
+                                <input type="text" class="form-control" id="documentTypeVersion" placeholder="documentTypeVersion" name="documentTypeVersion" value="@type.documentTypeVersion">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <br />
+                                <button type="submit" class="btn btn-primary mr-2" name="save" id="save">تعديل</button>
+                            </div>
+                        </div>
+
+                    </form>
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+
+                                <th> نوع الفاتورة </th>
+
+
+
+
+
+
+                            </tr>
+                            @foreach (var item in bill_Types)
+                            {
+                                <tr>
+
+                                    <td>@item.type_name </td>
+
+
+
+                                </tr>
+                            }
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+    @if (ViewBag.coin_name != null&& ViewBag.type_name==null)
+    {
+        <div class="col-md-4 grid-margin stretch-card" dir="rtl">
+
+            <div class="card" dir="rtl">
+                <div class="card-body" dir="rtl">
+                    <h4 class="card-title">إعداد العملات</h4>
+                    <form class="forms-sample" method="post" action="/settings/editecoin">
+                        <div class="row">
+                            <div class="col-md-9 form-group">
+
+                                <label for="exampleInputName1">إسم العملة </label>
+
+                                <input type="hidden" id="coin_id" name="coin_id" value="@Request.QueryString["coin_id"].ToString()" class="form-control">
+
+                                <input type="text" class="form-control" id="coins_type" placeholder="إسم العملة" name="coins_type" value="@ViewBag.coin_name">
+
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <br />
+                                <button type="submit" class="btn btn-primary mr-2" name="save" id="save">تعديل</button>
+                            </div>
+                        </div>
+
+                    </form>
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+
+                                <th> إسم العملة </th>
+
+
+
+
+
+                            </tr>
+                            @foreach (var item in coins_types)
+                            {
+                                <tr>
+
+                                    <td>@item.coin_name </td>
+
+
+
+                                </tr>
+                            }
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    }
+
+    @if (ViewBag.coin_name == null && ViewBag.type_name == null && ViewBag.unit_name != null) 
+    {
+        <div class="col-md-4 grid-margin stretch-card" dir="rtl">
+            <div class="card" dir="rtl">
+                <div class="card-body" dir="rtl">
+                    <h4 class="card-title">إعداد وحدات القياس</h4>
+                    <form class="forms-sample" method="post" action="/settings/editeunits">
+                        <div class="row">
+                            <div class="col-md-9 form-group">
+                                <label for="exampleInputName1">وحدة القياس </label>
+                                <input type="hidden" id="unit_id" name="unit_id" value="@Request.QueryString["unit_id"].ToString()" class="form-control">
+
+
+                                <input type="text" class="form-control" id="unit_name" placeholder="وحدة القياس" name="unit_name" value="@unit_name.unit_name">
+                            </div>
+                            <div class="col-md-9 form-group">
+                                <label for="exampleInputName1">الكود الضريبى </label>
+                                
+
+
+                                <input type="text" class="form-control" id="tax_code" placeholder="الكود الضريبى" name="tax_code" value="@unit_name.tax_code">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <br />
+                                <button type="submit" class="btn btn-primary mr-2" name="save" id="save">تعديل</button>
+                            </div>
+                        </div>
+
+                    </form>
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+
+                                <th> وحدة القياس </th>
+
+
+
+
+
+
+                            </tr>
+                            @foreach (var item in units)
+                            {
+                                <tr>
+
+                                    <td>@item.unit_name </td>
+
+
+
+                                </tr>
+                            }
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+    </div>

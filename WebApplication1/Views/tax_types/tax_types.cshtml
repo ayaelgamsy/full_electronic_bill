@@ -1,0 +1,55 @@
+﻿@using WebApplication1.Models
+@model tax_types
+@{
+    ViewBag.Title = "tax_types";
+    List<tax_types> tax_Type = ViewBag.tax_Typeslist;
+}
+
+<div class="col-lg-12 grid-margin stretch-card" dir="rtl">
+<div class="card" dir="rtl">
+    <div class="card-body" dir="rtl">
+        <h4 class="card-title">انواع الضرائب</h4>
+        <div class="form-group"></div>
+        <div class="template-demo">
+            <button type="submit" class="btn btn-success btn-fw" onclick="window.location.href='/tax_types/creat_tax_type'">إضافة تعريف ضريبة</button>
+
+        </div>
+        <div class="form-group"></div>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+
+                    <th> @Html.LabelFor(n => n.tax_id) </th>
+
+                    <th> @Html.LabelFor(n => n.tax_name) </th>
+
+                    <th> @Html.LabelFor(n => n.tax_name_code) </th>
+                    <th> @Html.LabelFor(n => n.tax_cat_system_id) </th>
+                    <th> @Html.LabelFor(n => n.percent) </th>
+
+                    <th> </th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in tax_Type)
+                {
+                    <tr>
+
+                        <td>@item.tax_id</td>
+                        <td>@item.tax_name </td>
+                        <td>@item.tax_name_code  </td>
+                        <td>@item.tax_cat_system_id  </td>
+                        <td>@item.percent  </td>
+
+                       <td><a href="/tax_types/update_tax_type/@item.tax_id">تعديل</a></td>
+                        <td><a href="/tax_types/delete_tax_type/@item.tax_id"> حذف</a></td>
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>

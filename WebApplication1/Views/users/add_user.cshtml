@@ -1,0 +1,45 @@
+﻿@using WebApplication1.Models;
+@model users
+@{
+    ViewBag.Title = "add_user";
+}
+
+<div class="col-12 grid-margin stretch-card" dir="rtl">
+    <div class="card" dir="rtl">
+        <div class="card-body" dir="rtl" align="right">
+            <h4 class="card-title">تسجيل  بيانات مستخدم </h4>
+
+            <form class="forms-sample" method="post" action="/users/add_users_activity">
+                <div class="row">
+                    @Html.HiddenFor(n => n.user_id)
+
+                    <div class="col-4 form-group">
+                        @Html.LabelFor(n => n.user_name)
+                        @Html.TextBoxFor(n => n.user_name, new { @class = "form-control" })
+
+                        @Html.ValidationMessageFor(n => n.user_name)
+
+                    </div>
+                    <div class="col-4 form-group">
+                        @Html.LabelFor(n => n.password)
+                        @Html.PasswordFor(n => n.password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.password)
+
+                    </div>
+
+
+
+
+                    <div class="col-4 form-group">
+                        <button type="submit" class="btn btn-primary mr-2" name="save" id="save">حفظ</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

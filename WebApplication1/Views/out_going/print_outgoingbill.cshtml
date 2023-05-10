@@ -1,0 +1,383 @@
+﻿@using WebApplication1.Models
+@{
+    Layout = null;
+    out_going_billss bill = ViewBag.bill;
+    List<out_going_bills_details> bills_Details =(List<out_going_bills_details>) ViewBag.bills_detalils;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>print_outgoingbill</title>
+
+    <style>
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+            font-size: xx-large;
+        }
+
+        a {
+            color: #5D6975;
+            text-decoration: underline;
+        }
+
+        body {
+            position: relative;
+            width: 21cm;
+            height: 29.7cm;
+            margin: 0 auto;
+            color: #001028;
+            background: #FFFFFF;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            font-family: 'BKoodakBold',tahoma;
+        }
+
+        header {
+            padding: 10px 0;
+            margin-bottom: 30px;
+        }
+
+        #logo {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+            #logo img {
+                width: 90px;
+            }
+
+        h1 {
+            border-top: 1px solid #5D6975;
+            border-bottom: 1px solid #5D6975;
+            color: #5D6975;
+            font-size: 2.4em;
+            line-height: 1.4em;
+            font-weight: normal;
+            text-align: center;
+            margin: 0 0 20px 0;
+            background-color: darkgrey;
+            border-block-style: double;
+        }
+
+        #project {
+            float: left;
+        }
+
+            #project span {
+                color: #5D6975;
+                text-align: right;
+                width: 52px;
+                margin-right: 10px;
+                display: inline-block;
+                font-size: 0.8em;
+            }
+
+        #company {
+            float: right;
+            text-align: right;
+        }
+
+            #project div,
+            #company div {
+                white-space: nowrap;
+                font-size: large;
+            }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin-bottom: 20px;
+            border-block: groove;
+            border-color: black;
+            border-width: medium;
+            border-block-color: black;
+            border-block-width: thick;
+            border: 5px groove;
+        }
+
+            table tr:nth-child(2n-1) td {
+                background: #F5F5F5;
+                border-block: groove;
+               
+                border-width: medium;
+               
+                border-block-width: thick;
+                border-collapse: collapse;
+                border: 5px groove;
+            }
+
+            table th,
+            table td {
+                text-align: center;
+                border-block: groove;
+                border-color: black;
+                border-width: medium;
+                border-block-color: black;
+                border-block-width: thick;
+                border-block-style: groove;
+                border-collapse: collapse;
+                border: 5px groove;
+            }
+
+            table th {
+                padding: 5px 20px;
+                color: #5D6975;
+                border-bottom: 1px solid #C1CED9;
+                white-space: nowrap;
+                font-weight: normal;
+                font-size: x-large;
+                border-block: groove;
+               
+                border-width: medium;
+                border-block-color: black;
+                border-block-width: thick;
+                border-block-style: groove;
+                border-collapse: collapse;
+                border: 5px groove;
+            }
+
+            table .service,
+            table .desc {
+                text-align: right;
+                border-collapse: collapse;
+                border: 5px groove;
+            }
+
+            table td {
+                padding: 20px;
+                text-align: right;
+                font-size: x-large;
+                border-block: groove;
+                border-color: black;
+                border-width: medium;
+                border-block: groove;
+                border-color: black;
+                border-width: medium;
+              
+                border-block-width: thick;
+                border-block-style: groove;
+                border-collapse: collapse;
+                border: 5px groove;
+                
+            }
+
+                table td.service,
+                table td.desc {
+                    vertical-align: top;
+                    border-block: groove;
+                    border-color: black;
+                    border-width: medium;
+                   
+                    border-block-width: thick;
+                    border-block-style: groove;
+                    border-collapse: collapse;
+                    border: 5px groove;
+                    
+                }
+
+                table td.unit,
+                table td.qty,
+                table td.total {
+                    font-size: x-large;
+                    border-block: groove;
+                    
+                    border-width: medium;
+                    border-block-color: black;
+                    border-block-width: thick;
+                    border-block-style: groove;
+                    border-collapse: collapse;
+                    border: 5px groove;
+                   
+                }
+
+                table td.grand {
+                    border-top: 1px solid #5D6975;
+                    border-block: groove;
+                    
+                    border-width: medium;
+                    border-block-color: black;
+                    border-block-width: thick;
+                    border-block-style: groove;
+                    border-collapse: collapse;
+                    border: 5px groove;
+                }
+
+        #notices .notice {
+            color: #5D6975;
+            font-size: 1.2em;
+        }
+
+        footer {
+            color: #5D6975;
+            width: 100%;
+            height: 30px;
+            position: absolute;
+            bottom: 0;
+            border-top: 1px solid #C1CED9;
+            padding: 8px 0;
+            text-align: center;
+        }
+
+
+
+
+        div, input {
+            font-family: ArabicTwo_Bold;
+        }
+        .pbreak {
+            page-break-before: always;
+        }
+    </style>
+    <script type="text/javascript">
+    //  Arabic numbers support for any web browser by Unicode.
+    // alMubarmij [at] gmail [dot] com
+    // Don't forget to add: onload="replaceDigits()" in <body> tag.
+
+    var map =
+                [
+                "&\#1632;", "&\#1633;", "&\#1634;", "&\#1635;", "&\#1636;",
+                "&\#1637;", "&\#1638;", "&\#1639;", "&\#1640;", "&\#1641;"
+                ]
+
+    var replaceDigits = function () {
+        document.body.innerHTML =
+        document.body.innerHTML.replace(
+            /\d(?=[^<>]*(<|$))/g,
+            function ($0) { return map[$0] }
+        );
+    }
+
+
+
+    window.onload = replaceDigits
+    </script>
+    <script type="text/javascript" language="JavaScript" src="/scripts/jquery-1.9.1.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/scripts/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('a[href*="Page$"]').each(function () {
+
+                $(this).attr("title", "Testing...");
+
+            });
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <header class="clearfix">
+        @*<div id="logo">
+            <img src="~/logo.png">
+        </div>*@
+        <h1>فاتورة @bill.internal_codeto_activity  </h1>
+        <div id="company" class="clearfix">
+            @*<div>@bill.activity.activity_name شركة</div>
+        <div>العنوان @bill.activity.address </div>
+        <div>@bill.activity.phone_number الهاتف</div>
+        <div>@bill.activity.email البريد الإلكترونى</div>
+        <div>@bill.activity.commercial_register السجل التجارى</div>
+        <div>@bill.activity.tax_card بطاقة ضريبية</div>
+        <div>@bill.activity.tax_registration_number تسجيل ضريبى</div>*@
+            <div style="font-size:x-large">إلى @bill.customer.customer_name </div>
+
+            <div style="font-size:x-large"> العنوان @bill.customer.address</div>
+
+            <div style="font-size:x-large">تحريرا فى  @bill.bill_date.ToShortDateString() </div>
+        </div>
+        <div id="project" dir="rtl">
+            @*<div style="font-size:large">إلى @bill.customer.customer_name </div>
+            
+            <div> العنوان @bill.customer.address</div>
+            
+            <div>تحريرا فى  @bill.bill_date.ToShortDateString() </div>*@
+            @*<div><span>DUE DATE</span> September 17, 2015</div>*@
+        </div>
+    </header>
+    <main>
+       @if (bill.customer.manger_name != ""&& bill.customer.manger_name!=null)
+       { <div dir="rtl" style="text-align:right ; font-size:x-large ">عناية الأستاذ :@bill.customer.manger_name</div>
+        <div dir="rtl" style="text-align:right ; font-size:x-large "> الأستاذ :@bill.customer.manger_assistant</div>}
+        <div dir="rtl" style="text-align:center ; font-size:x-large ">تحية طيبة وبعد,,</div>
+        <div dir="rtl" style="text-align:center ; font-size:x-large ">
+            برجاء التفضل بالإحاطة بأنه يستحق عليكم مبلغ @Math.Round(Convert.ToDecimal(bill.final_total_plus_tax), 2)  @bill.coins_type.coin_name فقط وقدره @ViewBag.letters  @ViewBag.fraction فقط لا غير
+            وذلك نظير
+            @foreach (var item in bills_Details)
+            {@item.service.service_name}
+            خلال الفترة من @bill.from_date.ToShortDateString() إلى @bill.to_date.ToShortDateString() وبياناها كالتالى
+        </div>
+        <div dir="rtl" style="text-align:center ; font-size:x-large "> </div>
+        
+
+        <div dir="rtl" style="text-align:center ; font-size:x-large "></div>
+
+
+        <div> <br />         </div>
+        <table dir="rtl">
+            <thead>
+                <tr>
+                    <th>Total</th>
+                    <th class="service">Description</th>
+
+                    @*<th>PRICE</th>
+                         <th>QTY</th>*@
+
+                </tr>
+                </thead>
+            <tbody>
+                @foreach (var item in bills_Details)
+                {
+                <tr>
+
+
+                    <td class="total">@Math.Round(Convert.ToDecimal(item.total_units_after_discount),2) @bill.coins_type.coin_name</td>
+                    <td class="service">@item.service.service_name</td>
+                </tr>
+                }
+            <tr>
+
+
+             
+                <td class="total">
+                    @Math.Round(Convert.ToDecimal(bill.tax_value), 2)  @bill.coins_type.coin_name </td>
+              
+
+<td class="service"> 14% ضريبة قيمة مضافة</td>
+          </tr>
+          <tr>
+
+
+                @*<td class="unit">$40.00</td>
+    <td class="qty">20</td>*@
+              <td class="total"> @Math.Round(Convert.ToDecimal(bill.final_total_plus_tax),2)  @bill.coins_type.coin_name</td>
+                <td class="desc">الإجمالى +الضريبة</td>
+            </tr>
+
+            </tbody>
+        </table>
+        <div id="notices" dir="rtl">
+            <div dir="rtl" style="text-align:center; font-size:x-large">ولسيادتكم جزيل الشكر</div>
+            <div class="notice" dir="rtl" style="text-align: right; font-size: x-large ">شركة @bill.activity.activity_name</div>
+        </div>
+        <div class="notice" dir="rtl" style="text-align:right;font-size:x-large ; text-decoration-line:underline">ختم الشركة</div>
+        <div class="notice" dir="rtl" style="text-align:right; font-size: x-large  ; text-decoration-line:underline">  رقم التسجيل الضريبى @bill.activity.tax_registration_number </div>
+        <div class="notice" dir="ltr" style="text-align: right; font-size: x-large ; text-decoration-line:underline">  رقم الملف الضريبيى @bill.activity.tax_card</div>
+        <div class="notice" dir="ltr" style="text-align: right; font-size: x-large  ; text-decoration-line:underline">  السجل التجارى @bill.activity.commercial_register</div>
+        <div class="notice" dir="rtl" style="text-align: right; font-size: x-large  ; text-decoration-line:underline">العنوان @bill.activity.address </div>
+    </main>
+    <footer>
+        @bill.activity.address @bill.activity.phone_number @bill.activity.email
+    </footer>
+</body>
+</html>
+
+

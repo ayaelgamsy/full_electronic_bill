@@ -1,0 +1,49 @@
+﻿@using WebApplication1.Models
+@model tax_types
+@{
+    ViewBag.Title = "creat_tax_type";
+}
+<div class="col-12 grid-margin stretch-card" dir="rtl">
+    <div class="card" dir="rtl">
+        <div class="card-body" dir="rtl" align="right">
+            <h4 class="card-title">تسجيل  بيانات ضريبة </h4>
+
+            <form class="forms-sample" method="post" action="/tax_types/save_tax_type">
+                @Html.HiddenFor(n => n.tax_id)
+                <div class="form-group">
+                    @Html.LabelFor(n => n.tax_name)
+                    @Html.TextBoxFor(n => n.tax_name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.tax_name)
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.tax_name_code)
+                    @Html.TextBoxFor(n => n.tax_name_code, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.tax_name_code)
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(n => n.tax_cat_system_id)
+                    @Html.TextBoxFor(n => n.tax_cat_system_id, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.tax_cat_system_id)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.percent)
+                    @Html.TextBoxFor(n => n.percent, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.percent)
+                </div>
+
+
+
+                <button type="submit" class="btn btn-primary mr-2" name="save" id="save">حفظ</button>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

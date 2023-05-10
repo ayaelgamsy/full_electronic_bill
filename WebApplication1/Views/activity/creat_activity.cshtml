@@ -1,0 +1,153 @@
+﻿@using WebApplication1.Models
+@model activity
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+    List<activity> activiylist = ViewBag.activityvb;
+
+}
+
+
+
+
+<div class="col-12 grid-margin stretch-card" dir="rtl">
+    <div class="card" dir="rtl">
+        <div class="card-body" dir="rtl" align="right">
+            <h4 class="card-title">تسجيل  بيانات نشاط</h4>
+
+            <form class="forms-sample" method="post" action="/activity/save">
+                <div>
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+
+                            <label for="exampleInputName1">كود النشاط</label>
+                            <input type="text" class="form-control" id="activity_id" placeholder="كود النشاط" name="activity_id" value="@ViewBag.next_id" disabled>
+                            @Html.ValidationMessageFor(n => n.activity_id)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1"> اسم النشاط</label>
+                            <input type="text" class="form-control" id="activity_name" placeholder="اسم النشاط" name="activity_name">
+                            @Html.ValidationMessageFor(n => n.activity_name)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1"> رقم التسجيل الضريبى</label>
+                            <input type="text" class="form-control" id="tax_registration_number" placeholder="رقم التسجيل الضريبى" name="tax_registration_number">
+                            @Html.ValidationMessageFor(n => n.tax_registration_number)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1"> البطاقة الضريبية</label>
+                            <input type="text" class="form-control" id="tax_card" placeholder="البطاقة الضريبية" name="tax_card">
+                            @Html.ValidationMessageFor(n => n.tax_card)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1">  السجل التجارى</label>
+                            <input type="text" class="form-control" id="commercial_register" placeholder=" السجل التجارى" name="commercial_register">
+                            @Html.ValidationMessageFor(n => n.commercial_register)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1">   رقم الهاتف</label>
+                            <input type="text" class="form-control" id="phone_number" placeholder="  رقم الهاتف" name="phone_number">
+                            @Html.ValidationMessageFor(n => n.phone_number)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1">   المدير</label>
+                            <input type="text" class="form-control" id="manger_name" placeholder=" المدير" name="manger_name">
+                            @Html.ValidationMessageFor(n => n.manger_name)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1">   العنوان</label>
+                            <input type="text" class="form-control" id="address" placeholder=" العنوان" name="address">
+                            @Html.ValidationMessageFor(n => n.address)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1">  كود الفرع</label>
+                            <input type="text" class="form-control" id="branche_id" placeholder=" كود الفرع" name="branche_id">
+                            @Html.ValidationMessageFor(n => n.branche_id)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1">  الدولة</label>
+                            <input type="text" class="form-control" id="country" placeholder=" الدولة" name="country" value="EG" disabled>
+                            @Html.ValidationMessageFor(n => n.country)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1"> المحافظة</label>
+                            <input type="text" class="form-control" id="governate" placeholder=" المحافظة" name="governate">
+                            @Html.ValidationMessageFor(n => n.governate)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1"> الحى/المركز</label>
+                            <input type="text" class="form-control" id="regionCity" placeholder=" الحى/المركز" name="regionCity">
+                            @Html.ValidationMessageFor(n => n.regionCity)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1"> الشارع</label>
+                            <input type="text" class="form-control" id="street" placeholder="الشارع" name="street">
+                            @Html.ValidationMessageFor(n => n.street)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1"> رقم المبنى</label>
+                            <input type="text" class="form-control" id="buildingNumber" placeholder=" رقم المبنى" name="buildingNumber">
+                            @Html.ValidationMessageFor(n => n.buildingNumber)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1"> الرمز البريدى</label>
+                            <input type="text" class="form-control" id="postalCode" placeholder=" الرمز البريدى" name="postalCode">
+                            @Html.ValidationMessageFor(n => n.postalCode)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1"> الطابق</label>
+                            <input type="text" class="form-control" id="floor" placeholder=" الطابق" name="floor">
+                            @Html.ValidationMessageFor(n => n.floor)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1">الحجرة</label>
+                            <input type="text" class="form-control" id="room" placeholder=" الحجرة" name="room">
+                            @Html.ValidationMessageFor(n => n.room)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1">معلومات إضافية</label>
+                            <input type="text" class="form-control" id="additionalInformation" placeholder=" معلومات إضافية" name="additionalInformation">
+                            @Html.ValidationMessageFor(n => n.additionalInformation)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1">علامة مميزة</label>
+                            <input type="text" class="form-control" id="landmark" placeholder=" علامة مميزة" name="landmark">
+                            @Html.ValidationMessageFor(n => n.landmark)
+                        </div>
+
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1">  البريد الإلكترونى</label>
+                            <input type="text" class="form-control" id="email" placeholder=" البريد الإلكترونى" name="email">
+                            @Html.ValidationMessageFor(n => n.email)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1">  رقم الشركة الداخلى</label>
+                            <input type="text" class="form-control" id="internal_numberofcomp" placeholder=" رقم الشركة الداخلى" name="internal_numberofcomp">
+                            @Html.ValidationMessageFor(n => n.internal_numberofcomp)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1">  بداية مسلسل الفواتير</label>
+                            <input type="text" class="form-control" id="seed_number" placeholder=" رقم الشركة الداخلى" name="seed_number">
+                            @Html.ValidationMessageFor(n => n.seed_number)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1">  client_id</label>
+                            <input type="text" class="form-control" id="client_id" placeholder=" client_id" name="client_id">
+                            @Html.ValidationMessageFor(n => n.client_id)
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="exampleInputName1">  secret_id</label>
+                            <input type="text" class="form-control" id="secret_id" placeholder=" secret_id" name="secret_id">
+                            @Html.ValidationMessageFor(n => n.secret_id)
+                        </div>
+                    </div>
+                </div>
+                    <button type="submit" class="btn btn-primary mr-2" name="save" id="save">حفظ</button>
+                    <button class="btn btn-light">إلغاء</button>
+            </form>
+    </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
